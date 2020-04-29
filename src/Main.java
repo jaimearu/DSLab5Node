@@ -25,8 +25,7 @@ public class Main implements Runnable {
     }
 
     public Main() throws IOException {
-        //sendUDPMessage("remNode "+name+"::"+thisIp, "192.168.1.1",
-        //        5000);
+        sendUDPMessage("remNode "+name+"::"+thisIp, "host1",10000);
         System.out.println("dees is mijn naam "+name);
         System.out.println("dees is mijn ip "+thisIp);
         chekFiles();
