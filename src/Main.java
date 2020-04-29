@@ -13,12 +13,13 @@ import java.util.stream.Stream;
 public class Main implements Runnable {
 
     String name = "NodeNaam";
-    String thisIp = "192.168.1.10";
+    InetAddress inetAddress = InetAddress.getLocalHost();
+    String thisIp =inetAddress.getHostAddress();
     String previous;
     String next;
     String previousIP = "";
     String nextIP = "";
-    ArrayList<String> files;
+    ArrayList<String> files = new ArrayList<>();
     boolean first = false;
     boolean running = true;
     public static void main(String[] args) throws IOException {
@@ -30,6 +31,7 @@ public class Main implements Runnable {
         //sendUDPMessage("remNode "+name+"::"+thisIp, "192.168.1.1",
         //        5000);
         chekFiles();
+        System.out.println("Opgestart");
     }
 
 
@@ -37,7 +39,7 @@ public class Main implements Runnable {
     public static void sendUDPMessage(String message,
                                       String ipAddress, int port) throws IOException {
         DatagramSocket socket = new DatagramSocket();
-        InetAddress group = InetAddress.getLocalHost();
+        InetAddress group = InetAddress.getByName(ipAddress);
         byte[] msg = message.getBytes();
         DatagramPacket packet = new DatagramPacket(msg, msg.length,
                 group, port);
@@ -51,9 +53,9 @@ public class Main implements Runnable {
     public void receiveUDPMessage(String ip, int port) throws
             IOException {
         byte[] buffer = new byte[1024];
-        MulticastSocket socket = new MulticastSocket(4321);
-        InetAddress group = InetAddress.getByName("230.0.0.0");
-        socket.joinGroup(group);
+        MulticastSocket socket = new MulticastSocket(port);
+        //InetAddress group = InetAddress.getByName("230.0.0.0");
+        //socket.joinGroup(group);
         while (running) {
             System.out.println("Waiting for multicast message...");
             DatagramPacket packet = new DatagramPacket(buffer,
@@ -69,7 +71,7 @@ public class Main implements Runnable {
             else if(msg.contains("shutdown"))
                 shutdown();
         }
-        socket.leaveGroup(group);
+        //socket.leaveGroup(group);
         socket.close();
     }
 
@@ -163,7 +165,9 @@ public class Main implements Runnable {
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
-                files.add(listOfFiles[i].getName());
+                String bestand = listOfFiles[i].getName().replace("src\\Files\\","");
+                files.add(bestand);
+                System.out.println("Ik heb file "+bestand+" lokaal staan bruur.");
             } else if (listOfFiles[i].isDirectory()) {
                 System.out.println("Directory " + listOfFiles[i].getName());
             }
