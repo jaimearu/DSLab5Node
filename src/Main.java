@@ -4,11 +4,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Stream;
 
 public class Main implements Runnable {
 
@@ -163,12 +159,12 @@ public class Main implements Runnable {
 
     //Check locally stored files
     private void chekFiles(){
-        File folder = new File("src/Files");
+        File folder = new File("Files");
         File[] listOfFiles = folder.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
-                String bestand = listOfFiles[i].getName().replace("src\\Files\\","");
+                String bestand = listOfFiles[i].getName().replace("Files\\","");
                 files.add(bestand);
                 System.out.println("Ik heb file "+bestand+" lokaal staan bruur.");
             } else if (listOfFiles[i].isDirectory()) {
