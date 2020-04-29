@@ -70,7 +70,7 @@
       <workItem from="1587905788665" duration="56000" />
       <workItem from="1587969871513" duration="14048000" />
       <workItem from="1588071740842" duration="5603000" />
-      <workItem from="1588166838484" duration="371000" />
+      <workItem from="1588166838484" duration="943000" />
     </task>
     <task id="LOCAL-00001" summary="5 bekan af, ben ng nie zeker of de communicatie geimplementeerd ga werke, ook al stuk van 6 hier in">
       <created>1588079068067</created>
@@ -79,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588079068067</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="kakapipi">
+      <created>1588167438076</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588167438076</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,33 +94,34 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="5 bekan af, ben ng nie zeker of de communicatie geimplementeerd ga werke, ook al stuk van 6 hier in" />
-    <option name="LAST_COMMIT_MESSAGE" value="5 bekan af, ben ng nie zeker of de communicatie geimplementeerd ga werke, ook al stuk van 6 hier in" />
+    <MESSAGE value="kakapipi" />
+    <option name="LAST_COMMIT_MESSAGE" value="kakapipi" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="465" y="134" key="CommitChangelistDialog2" timestamp="1588079067379">
+    <state x="465" y="134" key="CommitChangelistDialog2" timestamp="1588167437568">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="465" y="134" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1588079067379" />
+    <state x="465" y="134" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1588167437568" />
     <state x="260" y="298" key="FileChooserDialogImpl" timestamp="1587970026414">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="260" y="298" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1587970026414" />
-    <state width="1877" height="296" key="GridCell.Tab.0.bottom" timestamp="1588167416915">
+    <state width="1877" height="296" key="GridCell.Tab.0.bottom" timestamp="1588167440932">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="296" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1588167416915" />
-    <state width="1877" height="296" key="GridCell.Tab.0.center" timestamp="1588167416915">
+    <state width="1877" height="296" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1588167440932" />
+    <state width="1877" height="296" key="GridCell.Tab.0.center" timestamp="1588167440932">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="296" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1588167416915" />
-    <state width="1877" height="296" key="GridCell.Tab.0.left" timestamp="1588167416915">
+    <state width="1877" height="296" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1588167440932" />
+    <state width="1877" height="296" key="GridCell.Tab.0.left" timestamp="1588167440932">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="296" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1588167416915" />
-    <state width="1877" height="296" key="GridCell.Tab.0.right" timestamp="1588167416915">
+    <state width="1877" height="296" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1588167440932" />
+    <state width="1877" height="296" key="GridCell.Tab.0.right" timestamp="1588167440932">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="296" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1588167416915" />
+    <state width="1877" height="296" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1588167440932" />
     <state width="1877" height="362" key="GridCell.Tab.1.bottom" timestamp="1588167310925">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -152,8 +160,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>220</line>
+          <line>222</line>
           <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Main.java</url>
+          <line>167</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

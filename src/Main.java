@@ -12,8 +12,9 @@ import java.util.stream.Stream;
 
 public class Main implements Runnable {
 
-    String name = "NodeNaam";
+
     InetAddress inetAddress = InetAddress.getLocalHost();
+    String name = inetAddress.getHostName();
     String thisIp =inetAddress.getHostAddress();
     String previous;
     String next;
