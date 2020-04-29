@@ -133,18 +133,18 @@ public class Main implements Runnable {
             }
 
             if(first){
-                sendUDPMessage("previous "+name+"::ip "+thisIp,temp.get(1),5000);
-                sendUDPMessage("next "+name+"::ip "+thisIp,temp.get(1),5000);
+                sendUDPMessage("previous "+name+"::ip "+thisIp,temp.get(1),10000);
+                sendUDPMessage("next "+name+"::ip "+thisIp,temp.get(1),10000);
                 first = false;
             }
             else{
                 if(hashfunction(name,true)<hashfunction(temp.get(0),true) && hashfunction(temp.get(0),true) < hashfunction(next,true)){
-                    sendUDPMessage("previous "+name+"::ip "+thisIp,temp.get(1),5000);
+                    sendUDPMessage("previous "+name+"::ip "+thisIp,temp.get(1),10000);
                     next = temp.get(0);
                     nextIP = temp.get(1);
                 }
                 if(hashfunction(previous,true)<hashfunction(temp.get(0),true) && hashfunction(temp.get(0),true) < hashfunction(name,true)){
-                    sendUDPMessage("next "+name+"::ip "+thisIp,temp.get(1),5000);
+                    sendUDPMessage("next "+name+"::ip "+thisIp,temp.get(1),10000);
                     previous = temp.get(0);
                     previousIP = temp.get(1);
                 }
@@ -174,10 +174,10 @@ public class Main implements Runnable {
 
     //ShutDown
     private void shutdown() throws IOException {
-        sendUDPMessage("next "+next+"::"+nextIP,previousIP,5000);
-        sendUDPMessage("previous "+previous+"::"+previousIP,nextIP,5000);
+        sendUDPMessage("next "+next+"::"+nextIP,previousIP,10000);
+        sendUDPMessage("previous "+previous+"::"+previousIP,nextIP,10000);
         for (String file : files){
-            sendUDPMessage("File "+file,previousIP,5000);
+            sendUDPMessage("File "+file,previousIP,10000);
         }
         running = false;
         System.out.println("thread shut down");
@@ -219,7 +219,7 @@ public class Main implements Runnable {
         while (running) {
             try {
                 //receiveUDPMessage("230.0.0.0", 4321);
-                receiveUDPUnicastMessage(thisIp, 5000);
+                receiveUDPUnicastMessage(thisIp, 10000);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
