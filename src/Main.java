@@ -29,7 +29,7 @@ public class Main implements Runnable {
         sendUDPMessage("newNode "+name+"::"+thisIp, "230.0.0.0",10000);
         System.out.println("dees is mijn naam "+name);
         System.out.println("dees is mijn ip "+thisIp);
-        //chekFiles();
+        chekFiles();
         System.out.println("Opgestart");
         setupb = false;
     }
