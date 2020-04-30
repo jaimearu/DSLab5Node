@@ -87,6 +87,8 @@ public class Main implements Runnable {
             socket.receive(packet);
             String msg = new String(packet.getData(),
                     packet.getOffset(), packet.getLength());
+            if (msg.contains("nodeCount"))
+                setUp(msg);
             if (msg.contains("newNode"))
             getNameAndIp(msg);
             else if (msg.contains("previous"))
@@ -125,32 +127,34 @@ public class Main implements Runnable {
     private ArrayList<String> getNameAndIp(String msg) throws IOException {
         ArrayList<String> temp = new ArrayList<>();
         if (msg.contains("newNode")) {
-            String haha = msg.replace("newNode ","");
+            String haha = msg.replace("newNode ", "");
             if (!haha.isEmpty()) {
                 String[] tokens = haha.split("::");
                 for (String t : tokens)
                     temp.add(t);
             }
 
-            if(first){
-                sendUDPMessage("previous "+name+"::ip "+thisIp,temp.get(1),10000);
-                sendUDPMessage("next "+name+"::ip "+thisIp,temp.get(1),10000);
-                first = false;
-            }
-            else{
-                if(hashfunction(name,true)<hashfunction(temp.get(0),true) && hashfunction(temp.get(0),true) < hashfunction(next,true)){
-                    sendUDPMessage("previous "+name+"::ip "+thisIp,temp.get(1),10000);
-                    next = temp.get(0);
-                    nextIP = temp.get(1);
-                }
-                if(hashfunction(previous,true)<hashfunction(temp.get(0),true) && hashfunction(temp.get(0),true) < hashfunction(name,true)){
-                    sendUDPMessage("next "+name+"::ip "+thisIp,temp.get(1),10000);
-                    previous = temp.get(0);
-                    previousIP = temp.get(1);
+        }
+            if (msg.contains("nodeCount")) {
+                if (first) {
+                    sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
+                    sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
+                    first = false;
+                } else {
+                    if (hashfunction(name, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(next, true)) {
+                        sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
+                        next = temp.get(0);
+                        nextIP = temp.get(1);
+                    }
+                    if (hashfunction(previous, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(name, true)) {
+                        sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
+                        previous = temp.get(0);
+                        previousIP = temp.get(1);
+                    }
                 }
             }
 
-        }
+
 
         return temp;
     }
