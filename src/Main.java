@@ -26,7 +26,7 @@ public class Main implements Runnable {
     }
 
     public Main() throws IOException {
-        sendUDPMessage("newNode "+name+"::"+thisIp, "230.0.0.0",10000);
+        //sendUDPMessage("newNode "+name+"::"+thisIp, "230.0.0.0",10000);
         System.out.println("dees is mijn naam "+name);
         System.out.println("dees is mijn ip "+thisIp);
         //chekFiles();
