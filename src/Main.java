@@ -146,6 +146,12 @@ public class Main implements Runnable {
                 System.out.println("de tweede is erbij");
                 sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
                 sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
+                next = temp.get(0);
+                nextIP = temp.get(1);
+                previous = temp.get(0);
+                previousIP = temp.get(1);
+                System.out.println("Mijne next is nu "+next+" "+nextIP);
+                System.out.println("Mijne previous is nu "+previous+" "+previousIP);
                 first = false;
             } else {
                 if (hashfunction(name, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(next, true)) {
