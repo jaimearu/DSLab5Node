@@ -25,7 +25,7 @@ public class Main implements Runnable {
     }
 
     public Main() throws IOException {
-        sendUDPMessage("remNode "+name+"::"+thisIp, "host1",10000);
+        sendUDPMessage("newNode "+name+"::"+thisIp, "230.0.0.0",10000);
         System.out.println("dees is mijn naam "+name);
         System.out.println("dees is mijn ip "+thisIp);
         chekFiles();
@@ -52,8 +52,8 @@ public class Main implements Runnable {
             IOException {
         byte[] buffer = new byte[1024];
         MulticastSocket socket = new MulticastSocket(port);
-        //InetAddress group = InetAddress.getByName("230.0.0.0");
-        //socket.joinGroup(group);
+        InetAddress group = InetAddress.getByName("230.0.0.0");
+        socket.joinGroup(group);
         while (running) {
             System.out.println("Waiting for multicast message...");
             DatagramPacket packet = new DatagramPacket(buffer,
@@ -69,7 +69,7 @@ public class Main implements Runnable {
             else if(msg.contains("shutdown"))
                 shutdown();
         }
-        //socket.leaveGroup(group);
+        socket.leaveGroup(group);
         socket.close();
     }
 
@@ -218,8 +218,7 @@ public class Main implements Runnable {
     public void run() {
         while (running) {
             try {
-                //receiveUDPMessage("230.0.0.0", 4321);
-                receiveUDPUnicastMessage(thisIp, 10000);
+                receiveUDPUnicastMessage(230.0.0.0, 10000);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
