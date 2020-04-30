@@ -63,6 +63,7 @@ public class Main implements Runnable {
             socket.receive(packet);
             String msg = new String(packet.getData(),
                     packet.getOffset(), packet.getLength());
+            System.out.println(msg);
             if(msg.contains("newNode"))
                 getNameAndIp(msg);
             else if(msg.contains("nodeCount")){
