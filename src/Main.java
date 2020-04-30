@@ -89,9 +89,8 @@ public class Main implements Runnable {
                     packet.getOffset(), packet.getLength());
             if (msg.contains("nodeCount"))
                 setUp(msg);
-            if (msg.contains("newNode"))
             getNameAndIp(msg);
-            else if (msg.contains("previous"))
+            if (msg.contains("previous"))
                 previous(msg);
             else if(msg.contains("next"))
                 next(msg);
@@ -137,6 +136,7 @@ public class Main implements Runnable {
         }
             if (msg.contains("nodeCount")) {
                 if (first) {
+                    System.out.println("de tweede is erbij");
                     sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
                     sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
                     first = false;
@@ -191,6 +191,7 @@ public class Main implements Runnable {
     private void setUp(String msg){
         String haha = msg.replace("nodeCount ","");
         if(Integer.parseInt(haha)<1){
+            System.out.println("ik ben de eerste");
              next = previous = name;
              nextIP = previousIP = thisIp;
             first = true;
