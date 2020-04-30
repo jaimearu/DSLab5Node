@@ -29,7 +29,7 @@ public class Main implements Runnable {
         sendUDPMessage("newNode "+name+"::"+thisIp, "230.0.0.0",10000);
         System.out.println("dees is mijn naam "+name);
         System.out.println("dees is mijn ip "+thisIp);
-        chekFiles();
+        //chekFiles();
         System.out.println("Opgestart");
         setupb = false;
     }
@@ -90,9 +90,11 @@ public class Main implements Runnable {
             socket.receive(packet);
             String msg = new String(packet.getData(),
                     packet.getOffset(), packet.getLength());
+            System.out.println(msg);
             if (msg.contains("nodeCount"))
                 setUp(msg);
-            getNameAndIp(msg);
+            if (msg.contains("newNode"))
+               getNameAndIp(msg);
             if (msg.contains("previous"))
                 previous(msg);
             else if(msg.contains("next"))
@@ -192,7 +194,7 @@ public class Main implements Runnable {
 
     private void setUp(String msg){
         String haha = msg.replace("nodeCount ","");
-        if(Integer.parseInt(haha)<1){
+        if(Integer.parseInt(haha)<=1){
             System.out.println("ik ben de eerste");
              next = previous = name;
              nextIP = previousIP = thisIp;
