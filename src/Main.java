@@ -16,6 +16,7 @@ public class Main implements Runnable {
     String next;
     String previousIP = "";
     String nextIP = "";
+    boolean setupb;
     ArrayList<String> files = new ArrayList<>();
     boolean first = false;
     boolean running = true;
@@ -30,6 +31,7 @@ public class Main implements Runnable {
         System.out.println("dees is mijn ip "+thisIp);
         chekFiles();
         System.out.println("Opgestart");
+        setupb = false;
     }
 
 
@@ -134,24 +136,25 @@ public class Main implements Runnable {
             }
 
         }
-                if (first) {
-                    System.out.println("de tweede is erbij");
+        if (setupb) {
+            if (first) {
+                System.out.println("de tweede is erbij");
+                sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
+                sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
+                first = false;
+            } else {
+                if (hashfunction(name, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(next, true)) {
                     sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
-                    sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
-                    first = false;
-                } else {
-                    if (hashfunction(name, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(next, true)) {
-                        sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
-                        next = temp.get(0);
-                        nextIP = temp.get(1);
-                    }
-                    if (hashfunction(previous, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(name, true)) {
-                        sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
-                        previous = temp.get(0);
-                        previousIP = temp.get(1);
-                    }
+                    next = temp.get(0);
+                    nextIP = temp.get(1);
                 }
-
+                if (hashfunction(previous, true) < hashfunction(temp.get(0), true) && hashfunction(temp.get(0), true) < hashfunction(name, true)) {
+                    sendUDPMessage("next " + name + "::ip " + thisIp, temp.get(1), 10000);
+                    previous = temp.get(0);
+                    previousIP = temp.get(1);
+                }
+            }
+        }
 
 
         return temp;
@@ -194,6 +197,7 @@ public class Main implements Runnable {
              nextIP = previousIP = thisIp;
             first = true;
         }
+        setupb = true;
     }
 
     //Hashfunction, boolean specifies if the string is a node or not
