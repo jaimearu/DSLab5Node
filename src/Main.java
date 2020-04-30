@@ -218,7 +218,7 @@ public class Main implements Runnable {
     public void run() {
         while (running) {
             try {
-                receiveUDPUnicastMessage(230.0.0.0, 10000);
+                receiveUDPUnicastMessage("230.0.0.0", 10000);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
