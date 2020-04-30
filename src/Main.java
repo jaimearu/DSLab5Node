@@ -134,7 +134,6 @@ public class Main implements Runnable {
             }
 
         }
-            if (msg.contains("nodeCount")) {
                 if (first) {
                     System.out.println("de tweede is erbij");
                     sendUDPMessage("previous " + name + "::ip " + thisIp, temp.get(1), 10000);
@@ -152,7 +151,6 @@ public class Main implements Runnable {
                         previousIP = temp.get(1);
                     }
                 }
-            }
 
 
 
