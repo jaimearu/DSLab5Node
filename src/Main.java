@@ -29,7 +29,7 @@ public class Main implements Runnable {
         sendUDPMessage("newNode "+name+"::"+thisIp, "230.0.0.0",10000);
         System.out.println("dees is mijn naam "+name);
         System.out.println("dees is mijn ip "+thisIp);
-        chekFiles();
+        //chekFiles();
         System.out.println("Opgestart");
         setupb = false;
     }
@@ -115,6 +115,7 @@ public class Main implements Runnable {
             String[] tokens = haha.split("::");
             next = tokens[0];
             nextIP = tokens[1];
+            System.out.println("Mijne next is nu "+tokens[0]+" "+tokens[1]);
         }
     }
 
@@ -125,6 +126,7 @@ public class Main implements Runnable {
             String[] tokens = haha.split("::");
             previous = tokens[0];
             previousIP = tokens[1];
+            System.out.println("Mijne previous is nu "+tokens[0]+" "+tokens[1]);
         }
     }
     //Parse name and IP of other nodes From UDP Muticast mesages
